@@ -1,0 +1,13 @@
+<ul>
+	<li id="flechita_nav"><a href="#"></a></li>
+		{% for m in menu %}
+		    <li><a href="{{m.url}}" {% if m.active %}style="color: red" {% endif %}>{{m.name}}</a></li>
+		{% endfor %}	
+</ul>
+<ul>
+	<li id="flechita_nav"><a href="#"></a></li>
+		{% for cat in categorias %}
+		    <li><a href="{% url "categoria" cat.pk %}">{{cat}}</a></li>
+		{% endfor %}
+	<li id="publicar_nav"><a href="#">Publicar</a></li>
+</ul>

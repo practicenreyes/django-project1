@@ -11,13 +11,13 @@ from django.contrib.auth.decorators import login_required
 def home(request):
 	categorias = Categoria.objects.all()
 	enlaces = Enlace.objects.order_by("-votos").all()
-	return render_to_response("index.html", locals())
+	return render(request, "index.html", locals())
 
 def categoria(request, categoria_id):
 	categorias = Categoria.objects.all()
 	cat = get_object_or_404(Categoria, pk=categoria_id)
 	enlaces = Enlace.objects.filter(categoria = cat)
-	return render_to_response("index.html", locals())
+	return render(request, "index.html", locals())
 
 @login_required
 def add(request):
@@ -30,7 +30,7 @@ def add(request):
 			return redirect("/")
 	else:
 		form = EnlaceForm()
-	return render_to_response("form.html", context_instance = RequestContext(request, locals()))
+	return render(request, "form.html", locals())
 
 @login_required
 def plus(request, enlace_id):
