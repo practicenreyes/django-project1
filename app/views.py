@@ -46,3 +46,10 @@ def minus(request, enlace_id):
 	enlace.save()
 	return redirect('/')
 	
+from django.views.generic import ListView
+
+class EnlaceListView(ListView):
+	model = Enlace
+	context_object_name = 'enlaces'
+	def get_template_names(self):
+		return 'index.html'
